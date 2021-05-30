@@ -1,0 +1,18 @@
+let data = [
+    {
+        "board_info_idx" : 1,
+        "board_info_name" : "게시판 1",
+    },
+    {
+        "board_info_idx" : 2,
+        "board_info_name" : "게시판 2",
+    },
+    {
+        "board_info_idx" : 3,
+        "board_info_name" : "게시판 3",
+    },
+    {
+        "board_info_idx" : 4,
+        "board_info_name" : "게시판 4",
+    }
+]

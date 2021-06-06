@@ -7,18 +7,9 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navMenu">
-            <ul class="navbar-nav">
+            <ul class="navbar-nav" v-for="obj in server_data">
                 <li class="nav-item">
-                    <router-link to="board_main" class="nav-link">자유게시판</router-link>
-                </li>
-                <li class="nav-item">
-                    <router-link to="board_main" class="nav-link">유머게시판</router-link>
-                </li>
-                <li class="nav-item">
-                    <router-link to="board_main" class="nav-link">정치게시판</router-link>
-                </li>
-                <li class="nav-item">
-                    <router-link to="board_main" class="nav-link">스포츠게시판</router-link>
+                    <router-link to="board_main" class="nav-link">{{obj.boardInfoName}}</router-link>
                 </li>
             </ul>
 
@@ -48,8 +39,11 @@
         },
         created(){
             //TODO: Vue.js 웹 프로그래밍 - 36. 서버와 통신 기초 - 상단 메뉴 서버에서 불러오기
-            axios.get('data/data.js').then((response) => {
-                this.server_data = response.data
+            // axios.get('data/data.json').then((response) => {
+            //     this.server_data = response.data
+            // })
+            axios.post('data_test').then((response) => {
+                this.server_data = response
             })
         }
     }

@@ -1,42 +1,42 @@
 package com.example.demo.controller;
 
-//import org.jboss.arquillian.container.test.api.Deployment;
-//import org.jboss.arquillian.junit.Arquillian;
-//import org.jboss.shrinkwrap.api.ShrinkWrap;
-//import org.jboss.shrinkwrap.api.asset.EmptyAsset;
-//import org.jboss.shrinkwrap.api.spec.JavaArchive;
-//import org.junit.runner.RunWith;
-//import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-//import org.springframework.test.context.junit4.SpringRunner;
-//import org.springframework.test.web.servlet.MockMvc;
-//
-//import static org.junit.Assert.*;
-//import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
-//import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-//import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import com.example.demo.repository.VueRepository;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
+import org.springframework.test.web.servlet.MockMvc;
 
-//@RunWith(SpringRunner.class)
-//@WebMvcTest
+import static org.mockito.BDDMockito.given;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+//@SpringBootTest
+@ExtendWith(SpringExtension.class)
+@WebMvcTest(VueController.class)
 public class VueControllerTest {
 
-//    @Autowired
-//    MockMvc mockMvc;
-//
-//    @Test
-//    public void board_main() throws Exception {
-//        mockMvc.perform(get("/board_main"))
-//                .andDo(print())
-//                .andExpect(status().isOk())
-////        .andExpect(content().string("hello"))
-//        ;
-//    }
-//
-//    @Test
-//    public void board_modify() {
-//    }
-//
-//    @Test
-//    public void board_read() {
-//    }
+    @Autowired
+    MockMvc mockMvc;
+
+    @MockBean
+    VueRepository vueRepository;
+
+    //TODO: 테스트 코드로 실행하면 vueRepository.findBoardInfo() 결과가 0건이 나타남
+    @Test
+    public void data_test() throws Exception {
+
+        given(vueRepository.findBoardInfo().size()).willReturn(4);
+
+        mockMvc.perform(post("/data_test"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().string("test"))
+                ;
+    }
 }

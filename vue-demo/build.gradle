@@ -22,6 +22,7 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	annotationProcessor 'org.projectlombok:lombok'
@@ -29,6 +30,9 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 //	implementation group: 'org.webjars.npm', name: 'http-vue-loader', version: '1.4.2'
 	testImplementation group: 'com.h2database', name: 'h2', version: '1.4.200'
+	runtimeOnly 'com.h2database:h2'
+//	compile 'com.h2database:h2'
+
 }
 
 test {

@@ -1,6 +1,9 @@
 package com.example.demo.controller;
 
+import com.example.demo.model.BoardInfo;
 import com.example.demo.repository.VueRepository;
+import org.assertj.core.util.Lists;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +19,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-//@SpringBootTest
-@ExtendWith(SpringExtension.class)
 @WebMvcTest(VueController.class)
-public class VueControllerTest {
+class VueControllerTest {
 
     @Autowired
     MockMvc mockMvc;
@@ -27,11 +28,19 @@ public class VueControllerTest {
     @MockBean
     VueRepository vueRepository;
 
-    //TODO: 테스트 코드로 실행하면 vueRepository.findBoardInfo() 결과가 0건이 나타남
-    @Test
-    public void data_test() throws Exception {
+    private BoardInfo boardInfo;
 
-        given(vueRepository.findBoardInfo().size()).willReturn(4);
+    @BeforeEach
+    void setup() {
+        boardInfo = new BoardInfo();
+        boardInfo.setBoardInfoIdx(0);
+        boardInfo.setBoardInfoName("test");
+    }
+
+    @Test
+    void data_test() throws Exception {
+
+        given(this.vueRepository.findBoardInfo()).willReturn(Lists.newArrayList(boardInfo, new BoardInfo()));
 
         mockMvc.perform(post("/data_test"))
                 .andDo(print())

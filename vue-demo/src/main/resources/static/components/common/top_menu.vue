@@ -39,11 +39,9 @@
         },
         created(){
             //TODO: Vue.js 웹 프로그래밍 - 36. 서버와 통신 기초 - 상단 메뉴 서버에서 불러오기
-            // axios.get('data/data.json').then((response) => {
-            //     this.server_data = response.data
-            // })
             axios.post('data_test').then((response) => {
-                this.server_data = response
+                console.log(response.data);
+                this.server_data = response.data
             })
         }
     }

@@ -29,7 +29,6 @@ dependencies {
 	providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 //	implementation group: 'org.webjars.npm', name: 'http-vue-loader', version: '1.4.2'
-	testImplementation group: 'com.h2database', name: 'h2', version: '1.4.200'
 	runtimeOnly 'com.h2database:h2'
 //	compile 'com.h2database:h2'
 

@@ -8,19 +8,19 @@
                     <div class="card-body">
                         <div class="form-group">
                             <label for="user_name">이름</label>
-                            <input type="text" id="user_name" v-model="user_name" class="form-control" disabled="disabled"/>
+                            <input type="text" id="user_name" v-model="userName" class="form-control" disabled="disabled"/>
                         </div>
                         <div class="form-group">
                             <label for="user_id">아이디</label>
-                            <input type="text" id="user_id" v-model="user_id" class="form-control" disabled="disabled"/>
+                            <input type="text" id="user_id" v-model="userId" class="form-control" disabled="disabled"/>
                         </div>
                         <div class="form-group">
                             <label for="user_pw">비밀번호</label>
-                            <input type="password" id="user_pw" v-model="user_pw" class="form-control" />
+                            <input type="password" id="user_pw" v-model="userPw" class="form-control" />
                         </div>
                         <div class="form-group">
                             <label for="user_pw2">비밀번호 확인</label>
-                            <input type="password" id="user_pw2" v-model="user_pw2" class="form-control" />
+                            <input type="password" id="user_pw2" v-model="userPw2" class="form-control" />
                         </div>
                         <div class="form-group">
                             <div class="text-right">
@@ -40,28 +40,28 @@
     module.exports = {
         data: function () {
             return {
-                user_name    : '사용자이름',
-                user_id      : '사용자아이디',
-                user_pw      : '',
-                user_pw2     : '',
-                check_user_id: false
+                userName   : '사용자이름',
+                userId     : '사용자아이디',
+                userPw     : '',
+                userPw2    : '',
+                checkUserId: false
             }
         },
         methods : {
             check_input : function () {
-                if(this.user_pw.length < 4){
+                if(this.userPw.length < 4){
                     alert("비밀번호는 4글자 이상입니다")
                     this.user_pw = ''
                     $("#user_pw").focus()
                     return
                 }
-                if(this.user_pw2.length < 4){
+                if(this.userPw2.length < 4){
                     alert("비밀번호는 4글자 이상입니다")
                     this.user_pw2 = ''
                     $("#user_pw2").focus()
                     return
                 }
-                if(this.user_pw != this.user_pw2){
+                if(this.userPw != this.userPw2){
                     alert("비밀번호가 일치하지 않습니다")
                     this.user_pw = ''
                     this.user_pw2 = ''

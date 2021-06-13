@@ -12,11 +12,11 @@
                         </div>
                         <div class="form-group">
                             <label for="user_id">아이디</label>
-                            <input type="text" id="user_id" v-model="user_id" class="form-control"/>
+                            <input type="text" id="user_id" v-model="userId" class="form-control"/>
                         </div>
                         <div class="form-group">
                             <label for="user_pw">비밀번호</label>
-                            <input type="password" id="user_pw" v-model="user_pw" class="form-control"/>
+                            <input type="password" id="user_pw" v-model="userPw" class="form-control"/>
                         </div>
                         <div class="form-group text-right">
                             <button type="button" @click="check_input" class="btn btn-primary">로그인</button>
@@ -34,21 +34,21 @@
     module.exports = {
         data : function(){
             return {
-                is_login_fail : false,
-                user_id : '',
-                user_pw : ''
+                is_login_fail: false,
+                userId       : '',
+                userPw       : ''
             }
         },
         methods : {
             check_input : function () {
                 // 유효성 검사
-                if(this.user_id.length < 4){
+                if(this.userId.length < 4){
                     alert("아이디는 4글자 이상입니다")
                     $("#user_id").val("")
                     $("#user_id").focus()
                     return
                 }
-                if(this.user_pw.length < 4){
+                if(this.userPw.length < 4){
                     alert("비밀번호는 4글자 이상입니다")
                     $("#user_pw").val("")
                     $("#user_pw").focus()

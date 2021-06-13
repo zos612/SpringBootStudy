@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Collection;
 import java.util.List;
 
-public interface VueRepository extends Repository<BoardInfo, Integer> {
+public interface BoardInfoRepository extends Repository<BoardInfo, Integer> {
 
     @Query("SELECT boardInfo FROM BoardInfo boardInfo")
     @Transactional(readOnly = true)

@@ -5,10 +5,7 @@ import com.example.demo.model.User;
 import com.example.demo.repository.BoardInfoRepository;
 import com.example.demo.repository.UserRepository;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -79,8 +76,9 @@ public class VueController {
 
     @PostMapping("join_user")
     @ResponseBody
-    public User join_user(@ModelAttribute User user){
+    public boolean join_user(@ModelAttribute User user){
+        user.setUserIndex(1);
         userRepository.save(user);
-        return user;
+        return true;
     }
 }

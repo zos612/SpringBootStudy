@@ -92,14 +92,14 @@
                     return
                 }
 
+                //@ModelAttribute로 받을때 사용
                 // let params = new URLSearchParams();
                 // params.append('userName', this.user.userName)
                 // params.append('userId', this.user.userId)
                 // params.append('userPw', this.user.userPw)
-                let user = this.user
 
                 axios.post('join_user', this.user).then((response) => {
-                    if(response.data.result === true){
+                    if(response.data === true){
                         alert('가입이 완료되었습니다')
                         this.$router.push('/login')
                     }

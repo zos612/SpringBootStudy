@@ -76,7 +76,7 @@ public class VueController {
 
     @PostMapping("join_user")
     @ResponseBody
-    public boolean join_user(@ModelAttribute User user){
+    public boolean join_user(@RequestBody User user){
         user.setUserIndex(1);
         userRepository.save(user);
         return true;
